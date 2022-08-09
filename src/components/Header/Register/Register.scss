@@ -1,6 +1,13 @@
 .login-wrapper {
+  overflow-y: auto;
   .login-container {
     width: 722px;
     max-width: 100%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 580px) {
+    .login-container {
+      width: 100%;
+    }
   }
 }

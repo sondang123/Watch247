@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import "swiper/css";
-import { Pagination, Scrollbar, A11y } from "swiper";
+import { Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./SliderProduct.scss";
@@ -35,12 +35,32 @@ const SliderProduct = () => {
     <div className="slider-product">
       {/* <h2 className="slider-product-title">Gợi ý cho bạn</h2> */}
       <Swiper
-        modules={[Pagination, Scrollbar, A11y]}
+        modules={[Pagination, Scrollbar, A11y, Autoplay]}
         pagination={{ clickable: true }}
         spaceBetween={20}
         slidesPerView={5}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          // when window width is >= 640px
+          0: {
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px
+          768: {
+            maxWidth: 768,
+            slidesPerView: 2,
+          },
+          1024: {
+            maxWidth: 1024,
+            slidesPerView: 4,
+          },
+        }}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
       >
         {resultTopProduct &&
           resultTopProduct.map((item) => (

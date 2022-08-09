@@ -12,8 +12,6 @@
     transform: translate(-50%, 0);
     top: 10px;
   }
-  @media screen and (md) {
-  }
   .login-container {
     width: 600px;
 
@@ -128,6 +126,17 @@
       background-color: #fff;
       top: -8px;
       left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .login-wrapper {
+    .login-container {
+      width: 100%;
+    }
+    .content-from-login {
+      width: 100%;
     }
   }
 }

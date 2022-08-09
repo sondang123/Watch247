@@ -15,7 +15,7 @@ function Register() {
   };
   return (
     <div className="login-wrapper">
-      <div className="content-from-login">
+      <div className="content-from-login container">
         <div className="logo-login-pages">
           <img src="../../../assets/images/LG.png" alt="" />
 
@@ -23,7 +23,7 @@ function Register() {
           <span className="sub-login-login">MEMBERS ONLY</span>
         </div>
         <Container>
-          <div className="login-container">
+          <div className="login-container ">
             <Form>
               <p className="title-form-login">Đăng Ký</p>
               <Form.Group className="" controlId="formBasicEmail">
@@ -73,7 +73,7 @@ function Register() {
                 </span>
               </Form.Group>
               <Form.Group
-                className="mb-3 d-flex "
+                className="mb-3 d-flex flex-wrap "
                 controlId="formBasicCheckbox"
               >
                 <Form.Check
@@ -93,7 +93,7 @@ function Register() {
               <Button className="w-100 btn-login-submit" type="submit">
                 ĐĂNG Ký
               </Button>
-              <div className="d-flex">
+              <div className="d-flex flex-wrap">
                 <p className="no-account">Bạn đã có tài khoản </p>
                 <Link to="/login" className="forgot-password">
                   Đăng nhập ngay

@@ -68,7 +68,7 @@ function Login() {
   };
   return (
     <div className="login-wrapper">
-      <div className="content-from-login">
+      <div className="content-from-login container">
         <div className="logo-login-pages">
           <img src="../../../assets/images/LG.png" alt="" />
 
