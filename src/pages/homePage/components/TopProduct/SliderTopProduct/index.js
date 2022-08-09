@@ -1,13 +1,11 @@
 import Card from "react-bootstrap/Card";
 // import Suggestions from "..";
-import watchImg from "../../../../../assets/images/watch1.png";
-import watchImg2 from "../../../../../assets/images/watch2.png";
-import watchImg1 from "../../../../../assets/images/son.jpg";
 
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../Suggestions/Suggestions.scss";
+import Rotate from "react-reveal/Rotate";
 
 // Import Swiper styles
 import "swiper/css";
@@ -54,31 +52,33 @@ function SliderTopProduct({ setResultTopProduct, resultTopProduct }) {
       {resultTopProduct &&
         resultTopProduct.map((item, index) => (
           <SwiperSlide key={index}>
-            <Link to={`/detailproduct/${item.watchId}`}>
-              <Card>
-                <div className="slider-suggestion-img">
-                  <Card.Img
-                    variant="top"
-                    src={
-                      item.images &&
-                      "https://dnk.mdcsoftware.com.vn/" + item.images[0]
-                    }
-                  />
-                </div>
+            <Rotate top left>
+              <Link to={`/detailproduct/${item.watchId}`}>
+                <Card>
+                  <div className="slider-suggestion-img">
+                    <Card.Img
+                      variant="top"
+                      src={
+                        item.images &&
+                        "https://dnk.mdcsoftware.com.vn/" + item.images[0]
+                      }
+                    />
+                  </div>
 
-                <Card.Body className="body-content-title">
-                  <Card.Title className="slider-suggestion-title">
-                    {item.reference.model.brand.name}
-                  </Card.Title>
-                  <Card.Text className="sub-title">
-                    {item.reference.model.name}
-                  </Card.Text>
-                  <Card.Text className="price" href="#">
-                    {item.retailPrice} {item.currency}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Link>
+                  <Card.Body className="body-content-title">
+                    <Card.Title className="slider-suggestion-title">
+                      {item.reference.model.brand.name}
+                    </Card.Title>
+                    <Card.Text className="sub-title">
+                      {item.reference.model.name}
+                    </Card.Text>
+                    <Card.Text className="price" href="#">
+                      {item.retailPrice} {item.currency}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Rotate>
           </SwiperSlide>
         ))}
     </Swiper>
