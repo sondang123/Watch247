@@ -1,0 +1,84 @@
+.modal-add-container {
+  .modal-content {
+    padding: 92px 111px;
+  }
+  .modal-add-header {
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 140%;
+    /* or 39px */
+
+    text-transform: capitalize;
+
+    /* Featured */
+
+    color: var(--color-featured);
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .btn-close-modal {
+    position: absolute;
+    right: 0;
+    top: 17px;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 100%;
+    /* identical to box height, or 35px */
+
+    text-align: center;
+
+    /* Text/Note50 */
+
+    color: #cccccc;
+    background-color: #fff;
+    border-color: transparent;
+  }
+  .modal-add-label {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+  }
+  .input-add-modal {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/Note */
+
+    color: var(--color-text-note);
+  }
+  .btn-next {
+    display: flex;
+    margin-left: auto;
+    padding: 10px 55px;
+    margin-top: 30px;
+  }
+
+  .select-ref {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    z-index: 1;
+    background-color: #ffff;
+    right: 0;
+    left: 0;
+  }
+  .select-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    &:hover {
+      background-color: rgb(244, 244, 244);
+    }
+  }
+}

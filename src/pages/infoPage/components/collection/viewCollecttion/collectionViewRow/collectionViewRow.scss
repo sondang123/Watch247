@@ -1,0 +1,70 @@
+.collection-view-row {
+  .header-colection {
+    background-color: #ffff;
+    padding: 20px;
+  }
+  .content-colection-view {
+    padding: 20px;
+  }
+  .btn-buy-post {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 8px;
+  }
+  .product-item:hover {
+    .collection-control-buy {
+      display: block;
+    }
+  }
+  .product-item-img {
+    height: 242px;
+  }
+  .card-body {
+    padding: 0;
+    padding-bottom: 12px;
+  }
+  .collection-control-buy {
+    position: absolute;
+    right: 20px;
+    background: #ffffff;
+    top: 20px;
+    display: none;
+    .item-control {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 160%;
+      /* or 22px */
+
+      text-align: center;
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+
+      color: #4f5b79;
+      border-top: 1px solid #cccc;
+      padding: 4px 10px;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+    }
+    .icon-control {
+      padding-right: 12px;
+    }
+  }
+  .btn-add-watch-collection {
+    border: 1px dashed #cccccc;
+
+    .content-btn-add-collection {
+      padding: 66px 10px;
+      img {
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
+
+.btn-outline {
+  background-color: #fff;
+  border: 1px solid var(--color-featured);
+  color: var(--color-featured);
+}

@@ -1,0 +1,54 @@
+.introduce-download-app {
+  padding: 32px 0 100px 0;
+  //   text-align: center;
+  //   margin: 0 auto;
+  .download-introduce-btn {
+    background: #131313;
+    color: #fff;
+    // padding: 10px;
+    margin: 32px auto;
+    border-radius: 4px;
+    padding: 5px;
+    &:hover {
+      opacity: 0.8;
+    }
+    .icon-apple {
+      font-size: 4rem;
+      padding-right: 4px;
+    }
+  }
+  span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+  }
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-align: left;
+  }
+  .introduce-qr-code {
+    background-color: #fff;
+    width: 205px;
+    height: 199px;
+    padding: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    .qr-code-content {
+      padding: 10px;
+      background: #bab5b5;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      color: #000000;
+    }
+  }
+}

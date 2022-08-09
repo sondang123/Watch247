@@ -1,0 +1,103 @@
+.notification-container {
+  background-color: #fff;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 400px;
+  top: 40px;
+
+  .header-notification {
+    border-bottom: 1px solid #cccc;
+    h4 {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+      padding: 16px;
+    }
+    .tick-notification {
+      color: var(--color-featured);
+      font-size: 1.8rem;
+      padding-right: 8px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 16px;
+      /* identical to box height, or 114% */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+      padding-right: 16px;
+    }
+  }
+  .list-notification {
+    max-height: 56vh;
+    overflow-y: auto;
+    .notification-item {
+      padding: 16px;
+      border-bottom: 1px solid #cccc;
+      &:hover {
+        background-color: #cccc;
+        cursor: pointer;
+      }
+      .avatar-img {
+        padding-right: 12px;
+        width: 20%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 16px;
+        /* or 114% */
+
+        letter-spacing: 0.01em;
+
+        color: var(--color-text-title);
+
+        display: block;
+        display: -webkit-box;
+
+        margin: 0 auto;
+
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .more-notification {
+    text-align: center;
+    text-decoration: underline;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 16px;
+      /* identical to box height, or 114% */
+
+      letter-spacing: 0.01em;
+      text-decoration-line: underline;
+
+      /* Featured */
+
+      color: var(--color-featured);
+      padding: 10px;
+    }
+  }
+}

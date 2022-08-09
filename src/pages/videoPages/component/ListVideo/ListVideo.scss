@@ -1,0 +1,57 @@
+.list-video-container {
+  .card {
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      cursor: pointer;
+    }
+  }
+  .card-video {
+    height: 210px;
+    width: 100%;
+    border: none;
+    background-color: #fff;
+  }
+  .play-media {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .share-media {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: #fff;
+  }
+  .thumbnail-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .body-des-video {
+    padding: 16px;
+    .card-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+      color: var(--color-text-title);
+    }
+    .card-text {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Note */
+      color: var(--color-text-note);
+    }
+  }
+}

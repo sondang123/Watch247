@@ -1,0 +1,122 @@
+.product-breadcrumb {
+  .product-breadcrumb-item {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 160%;
+    /* or 22px */
+
+    text-align: justify;
+    letter-spacing: 0.01em;
+
+    /* Featured */
+    color: var(--color-featured);
+    &::before {
+      content: ">";
+    }
+    &:first-child::before {
+      content: "";
+    }
+    a {
+      color: currentColor;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .product-breadcrumb-item.active {
+    color: #222;
+    text-align: justify;
+  }
+}
+.product-filter-container {
+  padding-top: 140px;
+  border-bottom: 1px solid var(--color-text-note);
+  padding-bottom: 20px;
+
+  .product-filter-select-controls {
+  }
+  .select-filter-product {
+    padding: 10px 6px;
+    border-color: #ccc;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+
+    &:focus {
+      border-color: #ccc;
+      box-shadow: none;
+    }
+    option {
+      padding: 20px 0;
+      background-color: #fff;
+    }
+  }
+  //   .select-filter-product-submit {
+  //     background-color: var(--color-featured);
+  //     color: #fff;
+  //   }
+  .submit-filter {
+    background-color: var(--color-featured);
+    padding: 10px 6px;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 160%;
+    width: 100%;
+    display: flex;
+    // justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    &::before {
+      content: url("../../../../assets/icon/icon-filter.png");
+    }
+    &:focus {
+      box-shadow: none !important;
+      background-color: var(--color-featured);
+      border-color: var(--color-featured);
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    &::after {
+      content: url("../../../../assets/icon/icon-v.png");
+      border: none;
+    }
+  }
+  .view-item-select {
+    margin-top: 20px;
+    .item-slect {
+      padding: 8px 12px;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Black */
+
+      color: var(--color-back);
+      background: #ececec;
+      border-radius: 12px;
+      margin-right: 8px;
+    }
+    .icon-close {
+      color: var(--color-text-note);
+      padding-left: 12px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.product-view-list {
+}
+.product-item {
+  border: none;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+    img {
+      transform: scale(1.04);
+      transition: linear 0.2s;
+    }
+  }
+  .product-item-img {
+    position: relative;
+    height: 255px;
+    width: 100%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      &:hover {
+        transform: scale(1.04);
+        transition: linear 0.2s;
+      }
+    }
+  }
+  .icon-heart {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    // color: #fff;
+    cursor: pointer;
+  }
+  .card-body {
+    padding: 12px 0;
+    margin: 0;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 140%;
+    /* or 25px */
+
+    letter-spacing: 0.005em;
+    text-transform: capitalize;
+
+    /* Black */
+
+    color: #131313;
+
+    display: block;
+    display: -webkit-box;
+
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sub-title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    /* or 25px */
+
+    /* Text/Note */
+
+    color: var(--color-text-note);
+
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .product-price {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 140%;
+    /* or 25px */
+
+    letter-spacing: 0.005em;
+    text-transform: capitalize;
+
+    /* Featured */
+
+    color: var(--color-featured);
+  }
+  .icon-star {
+    color: #ffd700;
+    padding-right: 8px;
+  }
+  .number-star {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 160%;
+    /* or 22px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+  }
+}
+.pagination-product {
+  padding-top: 32px;
+  .page-link {
+    padding: 9px 17px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 160%;
+    /* or 22px */
+
+    letter-spacing: 0.01em;
+
+    /* White */
+
+    // color: #ffffff;
+    color: var(--color-text-title);
+  }
+  .page-item.active {
+    .page-link {
+      background-color: var(--color-featured);
+      color: #fff;
+      border-color: transparent;
+    }
+  }
+}

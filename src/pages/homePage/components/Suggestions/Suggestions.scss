@@ -1,0 +1,73 @@
+.suggestions {
+  .slider-suggestion-img {
+    padding: 16px;
+    height: 280px;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .content-suggestion {
+    .list-item-brands {
+      background-color: #f5f5f5;
+      .card {
+        &:hover {
+          //   transform: scale(1.1);
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          //   box-shadow: red;
+          cursor: pointer;
+          transition: linear 0.5s;
+        }
+      }
+      .slider-suggestion-title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 140%;
+
+        letter-spacing: 0.005em;
+        text-transform: capitalize;
+        color: #131313;
+
+        display: block;
+        display: -webkit-box;
+        max-width: 100%;
+
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .body-content-title {
+        padding: 12px 16px;
+        .sub-title {
+          font-weight: 400;
+          font-size: 1.8rem;
+          line-height: 140%;
+
+          color: #919ca9;
+        }
+        .price {
+          font-weight: 700;
+          font-size: 1.8rem;
+          line-height: 140%;
+          /* or 25px */
+
+          letter-spacing: 0.005em;
+          text-transform: capitalize;
+
+          /* Featured */
+
+          color: var(--color-featured);
+        }
+      }
+    }
+    .list-slider-brand {
+      padding: 0;
+      padding-bottom: 37px;
+      .swiper-pagination {
+        padding: 16px 0;
+        background-color: #fff;
+      }
+    }
+  }
+}

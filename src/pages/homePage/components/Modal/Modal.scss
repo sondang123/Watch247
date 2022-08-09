@@ -1,0 +1,66 @@
+.modal-container {
+  padding-top: 32px;
+  padding-bottom: 50px;
+  .modal-content-text {
+    padding: 35px 61px 35px 21px;
+    h3 {
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 140%;
+      /* identical to box height, or 20px */
+
+      letter-spacing: 0.065em;
+
+      /* Featured */
+
+      color: var(--color-featured);
+    }
+    h4 {
+      font-weight: 700;
+      font-size: 4rem;
+      line-height: 118.2%;
+      /* or 47px */
+
+      letter-spacing: -0.035em;
+
+      /* Text/News */
+
+      color: #4f5b79;
+    }
+    p {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 160%;
+      /* or 29px */
+
+      letter-spacing: -0.015em;
+
+      /* Text/Note */
+
+      color: #919ca9;
+      padding: 8px 0 18px 0;
+    }
+    .btn-modal {
+      background: #bb8548;
+      box-shadow: 0px 13px 24px #ffdfbb;
+      border-radius: 15px;
+      font-weight: 800;
+      font-size: 1.4rem;
+      line-height: 120%;
+      /* identical to box height, or 17px */
+
+      text-align: center;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+
+      color: #ffffff;
+      padding: 21px 24px;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    .btn-modal-icon {
+      padding-right: 8px;
+    }
+  }
+}

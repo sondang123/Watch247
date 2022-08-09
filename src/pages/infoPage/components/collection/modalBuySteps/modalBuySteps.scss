@@ -1,0 +1,17 @@
+.modal-step-container {
+  .btn-prev {
+    background-color: #fff;
+    color: var(--color-featured);
+    border: 1px solid var(--color-featured);
+    &:hover {
+      background-color: var(--color-featured);
+      color: #fff;
+    }
+  }
+  .step-body-content {
+    padding: 20px 0;
+    .rs-panel-body {
+      padding: 0;
+    }
+  }
+}

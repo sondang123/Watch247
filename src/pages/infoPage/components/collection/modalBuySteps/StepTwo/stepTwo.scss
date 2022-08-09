@@ -1,0 +1,117 @@
+.step-two-wrapper {
+  .input-choo-file {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.step-two-container {
+  padding: 20px;
+  border: 1px dashed #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin-bottom: 10px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .icon-camera {
+    font-size: 10rem;
+  }
+  .text-choose-file {
+    width: 147px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    /* or 26px */
+
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .color-select-file {
+    color: var(--color-link);
+  }
+  .color-select-text {
+    color: #cccccc;
+  }
+}
+
+.step-two-image {
+  border: 1px dashed #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px;
+  width: 100%;
+  height: 192px;
+  cursor: pointer;
+  &:hover {
+    .close-btn-icon {
+      display: flex;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .close-btn-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    display: none;
+
+    .icon-close {
+      font-size: 1.8rem;
+      object-fit: cover;
+      border: 1px solid #ececec;
+      background: #ffffff;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+    }
+    .icon-pen {
+      font-size: 1.8rem;
+      object-fit: cover;
+      border: 1px solid #ececec;
+      background: #ffffff;
+      border-radius: 50%;
+
+      padding: 10px;
+      margin-bottom: 0;
+      cursor: pointer;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+    }
+    .update-file:hover {
+      .icon-pen {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        cursor: pointer;
+      }
+    }
+    .input-file-update {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}

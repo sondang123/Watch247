@@ -1,0 +1,27 @@
+.brandpage-container {
+  padding-top: 100px;
+  .top-brands {
+    background-color: #fff;
+  }
+  .list-all-brand {
+    padding: 24px 30px;
+    ul {
+      li {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 160%;
+        /* identical to box height, or 26px */
+
+        letter-spacing: 0.01em;
+
+        /* Text/Title */
+
+        color: var(--color-text-title);
+        padding: 10px 0;
+        &:hover {
+          color: var(--color-featured);
+        }
+      }
+    }
+  }
+}

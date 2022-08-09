@@ -1,0 +1,101 @@
+.slider-comment {
+  .swiper {
+    padding-bottom: 50px;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: var(--color-featured);
+  }
+  .introduce-heading {
+    width: auto;
+  }
+  .slider-container-list {
+    padding: 32px 50px;
+  }
+}
+.slider-introduce-item {
+  background-color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover {
+    // transform: scale(1.1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: linear 0.2s;
+  }
+  .slider-introduce-content {
+    padding: 30px 28px;
+  }
+  .slider-introduce-item-header {
+    .icon-star {
+      color: #ffd700;
+      font-size: 2rem;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Note */
+      color: var(--color-text-note);
+    }
+  }
+  .slider-introduce-item-content {
+    padding: 21px 0;
+    .slider-introduce-item-comment {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+      padding: 0 12px;
+    }
+    span {
+      font-size: 5rem;
+      color: var(--color-featured);
+    }
+  }
+  .slider-introduce-item-footer {
+    .slider-introduce-user-img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    h3 {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 160%;
+      /* identical to box height, or 29px */
+
+      letter-spacing: -0.015em;
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 160%;
+      /* identical to box height, or 29px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Note */
+
+      color: var(--color-text-note);
+    }
+  }
+}

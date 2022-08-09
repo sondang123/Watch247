@@ -1,0 +1,112 @@
+.product-view-column-container {
+  .product-view-column-item {
+    cursor: pointer;
+    margin-bottom: 24px;
+    &:hover {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      img {
+        transform: scale(1.04);
+        transition: linear 0.2s;
+      }
+    }
+  }
+  .watch-img-product {
+    height: 280px;
+    width: 100%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      &:hover {
+        transform: scale(1.04);
+        transition: linear 0.2s;
+      }
+    }
+  }
+}
+.product-column-content {
+  padding: 24px;
+  .product-column-header {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 8px;
+    h3 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      text-align: justify;
+      letter-spacing: 0.005em;
+      text-transform: capitalize;
+
+      /* Black */
+
+      color: var(--color-back);
+    }
+    .icon-heart {
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
+  .product-column-price {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 140%;
+    /* or 25px */
+
+    letter-spacing: 0.005em;
+    text-transform: capitalize;
+
+    /* Featured */
+
+    color: var(--color-featured);
+    padding-top: 32px;
+  }
+  .address-star {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+    .icon-star {
+      color: #ffcd87;
+    }
+    p {
+      padding: 0 8px;
+    }
+    .number-in-turn {
+      color: var(--color-featured);
+      letter-spacing: 0.01em;
+    }
+    .address-watch {
+      padding-left: 30px;
+      .icon-location-dot {
+        padding-right: 8px;
+      }
+    }
+  }
+  .name-product-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    text-align: justify;
+    letter-spacing: 0.01em;
+    li {
+      padding-top: 8px;
+      min-height: 35px;
+    }
+  }
+  .color-name-product-title {
+    color: var(--color-text-note);
+  }
+  .color-name-product-content {
+    color: var(--color-text-title);
+  }
+}

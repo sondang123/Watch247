@@ -1,0 +1,33 @@
+.HeaderNews-container {
+  .HeaderNews-top {
+    margin-top: 40px;
+    padding: 20px 0;
+    .news-dropdown-btn {
+      background-color: #fff;
+      color: #000;
+      border-color: transparent;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+      display: flex;
+      align-items: center;
+
+      padding-right: 32px;
+      &:focus {
+        box-shadow: none;
+      }
+      &:hover {
+        color: var(--color-featured);
+      }
+      &::after {
+        content: url("../../../../assets/icon/icon-dropdown-news-header.png");
+        border: none;
+      }
+    }
+  }
+}

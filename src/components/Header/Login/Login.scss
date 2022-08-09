@@ -1,0 +1,133 @@
+.login-wrapper {
+  position: relative;
+  background: url("../../../assets/images/bg-login.png") no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  .content-from-login {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 10px;
+  }
+  @media screen and (md) {
+  }
+  .login-container {
+    width: 600px;
+
+    // margin-top: 50px;
+
+    background-color: #fff;
+    padding: 24px 50px;
+    .title-form-login {
+      font-weight: 500;
+      font-size: 2.8rem;
+      line-height: 140%;
+      color: #bb8548;
+      // padding-bottom: 8px;
+    }
+    .eye-password {
+      position: absolute;
+      right: 20px;
+      top: 38px;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .title-label-login {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 160%;
+      letter-spacing: 0.01em;
+      padding-top: 16px;
+      color: #4f5b79;
+    }
+    .input-text-login {
+      // padding: 14px 12px;
+      padding: 10px;
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Note */
+
+      color: #919ca9;
+      &:focus {
+        outline: none;
+        // border-color: unset;
+      }
+    }
+    .forgot-password,
+    .no-account {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 160%;
+
+      letter-spacing: 0.01em;
+      text-decoration-line: underline;
+
+      color: #bb8548;
+    }
+    .no-account {
+      color: #4f5b79;
+      padding-right: 4px;
+      text-decoration: none;
+    }
+    .btn-login-submit {
+      background-color: #bb8548;
+      border-color: #bb8548;
+      height: 50px;
+      border-radius: unset;
+      margin-bottom: 24px;
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      text-align: center;
+
+      /* White */
+
+      color: #ffffff;
+
+      &:focus {
+        border-color: transparent;
+        box-shadow: none;
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+.logo-login-pages {
+  text-align: center;
+  padding-bottom: 20px;
+
+  .title-logo-login {
+    color: #fff;
+    font-size: 1.8rem;
+    letter-spacing: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .sub-login-login {
+    position: relative;
+    color: #fff;
+    letter-spacing: 1rem;
+    //   padding-top: 18px;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0.34px;
+      background-color: #fff;
+      top: -8px;
+      left: 0;
+    }
+  }
+}

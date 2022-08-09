@@ -1,0 +1,76 @@
+.header-news-contents {
+  .offset-news {
+    box-sizing: border-box;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    background-clip: padding-box;
+  }
+  .header-news-img {
+    width: 100%;
+  }
+}
+.news-content-right {
+  .header-news-content-text {
+    padding: 12px 0;
+    h2 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      line-height: 140%;
+      /* or 39px */
+
+      text-transform: capitalize;
+
+      /* Featured */
+
+      color: var(--color-featured);
+      display: block;
+      display: -webkit-box;
+
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* or 26px */
+
+      text-align: justify;
+      letter-spacing: 0.01em;
+
+      /* Text/News */
+
+      color: var(--color-text-title);
+    }
+  }
+  .user-by-news {
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-style: italic;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Featured */
+
+    color: var(--color-featured);
+  }
+  .time-news {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/News */
+
+    color: var(--color-text-title);
+  }
+  .icon-clock-news {
+    padding-right: 8px;
+  }
+}

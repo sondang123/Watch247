@@ -1,0 +1,44 @@
+.footer-container {
+  background: linear-gradient(180deg, #1d2428 0%, #0c0f13 100%);
+}
+.footer-content {
+  padding: 90px 50px;
+  img {
+    width: 140px;
+    height: 170px;
+  }
+  h5 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 130%;
+    /* or 31px */
+
+    letter-spacing: -0.01em;
+
+    /* Featured */
+
+    color: var(--color-featured);
+    text-align: left;
+  }
+  .list-unstyled {
+    text-align: left;
+    padding-top: 9px;
+    li {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 230%;
+      /* or 37px */
+
+      letter-spacing: -0.015em;
+
+      a {
+        color: #e8e8e8;
+        text-decoration: none;
+        &:hover {
+          color: var(--color-featured);
+        }
+      }
+    }
+  }
+}
