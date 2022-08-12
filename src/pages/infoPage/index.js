@@ -22,8 +22,11 @@ import "./infoPage.scss";
 import PurchaseHistoryRow from "./components/purchaseHistory/viewPurchaseHistoryRow/PurchaseHistoryRow";
 import ViewBuyRow from "./components/buy/viewBuy/ViewBuyRow/index";
 import Profile from "./components/Profile/index";
+import ViewLikeRow from "./components/love/viewLove/ViewLoveRow/index";
 
 const InfoPage = () => {
+  window.scrollTo(0, 0);
+
   return (
     <div>
       <Header />
@@ -101,7 +104,7 @@ const InfoPage = () => {
                     <Collection />
                   </Tab.Pane>
                   <Tab.Pane eventKey="fifth">
-                    <h3>b</h3>
+                    <ViewLikeRow />
                   </Tab.Pane>
                   <Tab.Pane eventKey="sixth">
                     <h3>b</h3>

@@ -11,10 +11,13 @@ import "./SliderProduct.scss";
 import { Link } from "react-router-dom";
 import GetData from "../../../../components/GetData";
 import MiscService from "./../../../../Service/MiscService/index";
+import WatchService from "./../../../../Service/WatchService/index";
 
-const SliderProduct = () => {
+const SliderProduct = ({ dataViewLike, dataApiLike, setDataApiLike }) => {
   // const dataWatch = GetData.GetDataWatch();
   const [resultTopProduct, setResultTopProduct] = useState([]);
+  const [dataRender, setDataRender] = useState();
+
   const token = GetData.GetToken();
   useEffect(() => {
     const fetchApi = async () => {
@@ -27,9 +30,103 @@ const SliderProduct = () => {
         },
       });
       setResultTopProduct(result.data.topWatches);
+
+      const list = [];
+      for (let i of result.data.topWatches) {
+        list.push({ ...i, like: false });
+      }
+
+      setDataRender(list);
     };
     fetchApi();
-  }, []);
+  }, [dataApiLike]);
+
+  const handleFilterLike = (item) => {
+    if (dataViewLike && dataViewLike.length > 0) {
+      const dataRenderCoppy = [...dataRender];
+      for (let i of dataViewLike) {
+        if (i.watchId === item.watchId) {
+          const objIndex = dataRenderCoppy.findIndex(
+            (list) => list.watchId === item.watchId
+          );
+
+          dataRenderCoppy[objIndex].like = true;
+          // setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+          return (
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="icon-heart"
+              style={{ color: "red" }}
+              onClick={(e) => handleMyFavorite(e, item)}
+            />
+          );
+          break;
+        }
+      }
+    }
+
+    return (
+      <FontAwesomeIcon
+        icon={faHeart}
+        className="icon-heart"
+        onClick={(e) => handleMyFavorite(e, item)}
+      />
+    );
+  };
+  const handleMyFavorite = (e, item) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (item.like === false) {
+      const dataRenderCoppy = [...dataRender];
+      const objIndex = dataRenderCoppy.findIndex(
+        (list) => list.watchId === item.watchId
+      );
+      dataRenderCoppy[objIndex].like = true;
+      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+
+      const fetchApi = async () => {
+        try {
+          const result = await WatchService.like(item.watchId, {
+            headers: {
+              Authorization:
+                "Bearer" + JSON.parse(localStorage.getItem("token")),
+              // Authorization: "Bearer" + `${token}`,
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json",
+            },
+          });
+          alert("Đã Like !");
+          setDataApiLike(result);
+        } catch (error) {}
+      };
+      fetchApi();
+    } else if (item.like === true) {
+      const dataRenderCoppy = [...dataRender];
+      const objIndex = dataRenderCoppy.findIndex(
+        (list) => list.watchId === item.watchId
+      );
+      dataRenderCoppy[objIndex].like = false;
+      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+
+      const fetchApi = async () => {
+        try {
+          const result = await WatchService.UnLike(item.watchId, {
+            headers: {
+              Authorization:
+                "Bearer" + JSON.parse(localStorage.getItem("token")),
+              // Authorization: "Bearer" + `${token}`,
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json",
+            },
+          });
+          alert("Đã UnLike !");
+          setDataApiLike(result);
+        } catch (error) {}
+      };
+      fetchApi();
+    }
+  };
 
   return (
     <div className="slider-product">
@@ -62,8 +159,8 @@ const SliderProduct = () => {
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={(swiper) => console.log(swiper)}
       >
-        {resultTopProduct &&
-          resultTopProduct.map((item) => (
+        {dataRender &&
+          dataRender.map((item) => (
             <SwiperSlide key={item.watchId}>
               <Link to={`/detailproduct/${item.watchId}`}>
                 <Card className="product-item">
@@ -77,7 +174,8 @@ const SliderProduct = () => {
                     />
                   </div>
                   <div>
-                    <FontAwesomeIcon icon={faHeart} className="icon-heart" />
+                    {/* <FontAwesomeIcon icon={faHeart} className="icon-heart" /> */}
+                    <div>{handleFilterLike(item)}</div>
                   </div>
                   <Card.Body>
                     <Card.Title>{item.reference.model.brand.name}</Card.Title>

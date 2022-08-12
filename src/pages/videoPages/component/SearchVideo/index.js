@@ -18,9 +18,9 @@ const SearchVideo = ({ setDataVideoRender, dataVideo }) => {
     <div>
       <div className="mb-4 search-video-container">
         <Form>
-          <div className="d-flex align-items-center justify-content-end ">
+          <div className="d-flex align-items-center justify-content-end flex-wrap">
             <Form.Group
-              className="mb-3 d-flex w-25 align-items-center"
+              className="mb-3 d-flex   align-items-center item-control-video"
               controlId="formBasicEmail"
             >
               <div className="w-50">sắp xếp theo</div>
@@ -38,7 +38,7 @@ const SearchVideo = ({ setDataVideoRender, dataVideo }) => {
               </Form.Select>
             </Form.Group>
             <Form.Group
-              className="mb-3 d-flex w-25 align-items-center mx-4 position-relative"
+              className="mb-3 d-flex  align-items-center mx-md-4 position-relative item-control-video"
               controlId="formBasicEmail"
             >
               <FontAwesomeIcon icon={faSearch} className="icon-searchs" />

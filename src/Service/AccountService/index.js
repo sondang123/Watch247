@@ -12,16 +12,16 @@ const AccountService = {
     );
   },
   get: (id) => {
-    const url = `/apps/${id}`;
+    const url = `/account/${id}`;
     return request.get(url);
   },
   post: (params) => {
-    const url = "/apps";
+    const url = "/account";
     return request.post(url, params);
   },
-  put: (id, params) => {
-    const url = `/apps/${id}`;
-    return request.put(url, params);
+  upDate: (id, params, headers) => {
+    const url = `/account/${id}`;
+    return request.put(url, params, headers);
   },
   delete: (id) => {
     const url = `/apps/${id}`;

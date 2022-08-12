@@ -17,6 +17,21 @@ const WatchService = {
     const url = `/watch/?page=${params.page}&limit=${params.limit}&brandId=${params.brandId}`;
     return request.get(url, headers);
   },
+  like: (watchid, headers) => {
+    const url = `/watch/like/${watchid}`;
+
+    return request.post(url, { modelIds: [1] }, headers);
+  },
+  UnLike: (watchid, headers) => {
+    const url = `/watch/unlike/${watchid}`;
+
+    return request.post(url, { modelIds: [1] }, headers);
+  },
+  getFavorite: (accid, headers) => {
+    const url = "/watch/favourite/";
+
+    return request.post(url, { body: accid }, headers);
+  },
 
   create: (data, headers) => {
     const url = "/watch/create";

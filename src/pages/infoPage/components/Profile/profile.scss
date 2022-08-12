@@ -1,0 +1,56 @@
+.profile-container {
+  background-color: #fff;
+  height: 100%;
+  padding: 50px 0;
+  .profile-container-content {
+    padding: 50px 100px;
+  }
+  .profile-title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 140%;
+    /* or 25px */
+
+    letter-spacing: 0.005em;
+    text-transform: capitalize;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+    padding-bottom: 16px;
+  }
+  .form-row {
+    padding: 8px 0;
+    input {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+    }
+  }
+  .profile-label {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 160%;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.01em;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+    // text-align: right;
+    // padding-right: 100px;
+  }
+  .btn-save {
+    margin-left: auto;
+    display: block;
+    margin-top: 30px;
+  }
+}

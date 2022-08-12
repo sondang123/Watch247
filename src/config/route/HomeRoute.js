@@ -13,6 +13,7 @@ import BrandPage from "./../../pages/brandPage/index";
 import ListProductPage from "./../../pages/listProductPage/index";
 import DetailNewPage from "./../../pages/detailNewPage/index";
 import VideoPage from "./../../pages/videoPages/index";
+import HelpPage from "./../../pages/helpPage/index";
 
 const HomeRouter = () => {
   const auth = GetData.GetAuth();
@@ -40,6 +41,7 @@ const HomeRouter = () => {
         element={<DetailNewPage />}
       />
       <Route path="/video" element={<VideoPage />} />
+      <Route path="/help" element={<HelpPage />} />
     </Routes>
   );
 };

@@ -15,12 +15,14 @@ import BannerInput from "../BannerInput";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
-
 import Notification from "./Notification/index";
 
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
+
 function Header(banner) {
+  const { t } = useTranslation();
   const [showBanner, setShowBanner] = useState(banner.banner);
   const [showNotification, setShowNotification] = useState(false);
   // let navigate = useNavigate();
@@ -80,20 +82,20 @@ function Header(banner) {
                 <Offcanvas.Body className="body-offcanvas-menu">
                   <Nav className="justify-content-end flex-grow-1 pe-3 content-nav-item  align-items-center ">
                     <Link to="/" className="header-item">
-                      Trang chủ
+                      {t("home")}
                     </Link>
                     <Link to="/introduce" className="header-item">
-                      Giới Thiệu
+                      {t("introduce")}
                     </Link>
                     <Link to="/brand" className="header-item">
-                      Thương Hiệu
+                      {t("brand")}
                     </Link>
                     <Link to="/products" className="header-item">
-                      Sản Phẩm
+                      {t("product")}
                     </Link>
 
                     <Link to="/news" className="header-item">
-                      Tin tức
+                      {t("news")}
                     </Link>
                     <Link to="/video" className="header-item">
                       Video
@@ -133,22 +135,30 @@ function Header(banner) {
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu className="dropdown-menu-list">
-                            <Dropdown.Item className="header-item">
-                              <Link to="/infoPage">Info</Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item className="header-item">
-                              <Link to="/register">Dang ky</Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item
+                            <Link
+                              to="/infoPage"
+                              className="header-item d-block ps-0 pt-3"
+                            >
+                              Info
+                            </Link>
+                            {/* <Dropdown.Item className="header-item"></Dropdown.Item> */}
+                            <Link
+                              to="/register"
+                              className="header-item d-block ps-0 pt-3"
+                            >
+                              Dang ky
+                            </Link>
+                            {/* <Dropdown.Item className="header-item"></Dropdown.Item> */}
+                            <div
                               onClick={handleLogout}
-                              className="header-item"
+                              className="header-item ps-0 pt-3"
                             >
                               <FontAwesomeIcon
                                 icon={faRightFromBracket}
                                 className="icon-logout"
                               />
                               Log out
-                            </Dropdown.Item>
+                            </div>
                           </Dropdown.Menu>
                         </Dropdown>
                       ) : (

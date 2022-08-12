@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Form from "react-bootstrap/Form";
 import {
@@ -17,15 +17,27 @@ const ViewProduct = ({
   setQueryFilter,
   setDataViewWatch,
   dataViewWatch,
+  dataViewLike,
+  setDataApiLike,
 }) => {
   const [layoutProduct, setLayOutProduct] = useState(true);
+  const [dataRender, setDataRender] = useState();
   const handleLayoutRow = () => {
     setLayOutProduct(true);
   };
   const handleLayoutColumn = () => {
     setLayOutProduct(false);
   };
-
+  console.log("dataViewWatch", dataViewWatch);
+  useEffect(() => {
+    const list = [];
+    if (Object.keys(dataViewWatch).length > 0) {
+      for (let i of dataViewWatch.watches) {
+        list.push({ ...i, like: false });
+      }
+      setDataRender(list);
+    }
+  }, [dataViewWatch]);
   return (
     <>
       <div className="d-flex justify-content-between view-product-header flex-wrap">
@@ -58,17 +70,21 @@ const ViewProduct = ({
       <div>
         {layoutProduct ? (
           <ProductViewRow
-            queryFilter={queryFilter}
-            setQueryFilter={setQueryFilter}
-            setDataViewWatch={setDataViewWatch}
-            dataViewWatch={dataViewWatch}
+            dataRender={dataRender}
+            setDataApiLike={setDataApiLike}
+            dataViewLike={dataViewLike}
+            setDataRender={setDataRender}
           />
         ) : (
           <ProductViewColumn
-            queryFilter={queryFilter}
-            setQueryFilter={setQueryFilter}
-            setDataViewWatch={setDataViewWatch}
-            dataViewWatch={dataViewWatch}
+            // queryFilter={queryFilter}
+            // setQueryFilter={setQueryFilter}
+            // setDataViewWatch={setDataViewWatch}
+            // dataViewWatch={dataViewWatch}
+            dataRender={dataRender}
+            setDataApiLike={setDataApiLike}
+            dataViewLike={dataViewLike}
+            setDataRender={setDataRender}
           />
         )}
         <PaginationPage

@@ -148,3 +148,10 @@ a {
 .modal-backdrop.show {
   opacity: 0.7;
 }
+
+.icon-heart {
+  color: #131313;
+  &:hover {
+    color: rgba(165, 18, 18, 0.907) !important;
+  }
+}

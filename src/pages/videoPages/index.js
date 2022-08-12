@@ -11,7 +11,7 @@ import Bracdcrumb from "./component/Breadcrumb/index";
 const VideoPage = () => {
   const [dataVideo, setDataVideo] = useState();
   const [dataVideoRender, setDataVideoRender] = useState();
-
+  window.scrollTo(0, 0);
   useEffect(() => {
     const fetchApi = async () => {
       try {

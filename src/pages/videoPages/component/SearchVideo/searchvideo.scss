@@ -7,4 +7,12 @@
     font-size: 1.8rem;
     padding: 10px 10px 10px 0;
   }
+  .item-control-video {
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    .item-control-video {
+      width: 25%;
+    }
+  }
 }

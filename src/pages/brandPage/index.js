@@ -10,8 +10,11 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import BrandService from "./../../Service/BrandService/index";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 const BrandPage = () => {
+  const { t } = useTranslation();
   const [rusultBrand, setReultBrand] = useState();
   window.scrollTo(0, 0);
   useEffect(() => {
@@ -36,10 +39,10 @@ const BrandPage = () => {
         <Container>
           <TopBrands />
           <div className="d-flex justify-content-between align-items-center header-top-brands">
-            <h3 className="title-top-brands">Tất Cả Thương Hiệu</h3>
+            <h3 className="title-top-brands">{t("allBrand")}</h3>
             <Link to="/products">
               <span className="see-more">
-                Xem Thêm
+                {t("seeMore")}
                 <FontAwesomeIcon
                   icon={faAngleRight}
                   className="icon-arrow-right"

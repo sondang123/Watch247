@@ -10,8 +10,12 @@ import { faAngleRight, faClock } from "@fortawesome/free-solid-svg-icons";
 import VideoService from "../../../../Service/VideoService";
 import "./Video.scss";
 import Roll from "react-reveal/Roll";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
+import { Link } from "react-router-dom";
 
 const Video = () => {
+  const { t } = useTranslation();
   const [resultVideo, setResultVideo] = useState([]);
   const [resultVideoItem, setResulVideotItem] = useState([]);
   useEffect(() => {
@@ -39,10 +43,15 @@ const Video = () => {
       <Container>
         <div className="d-flex justify-content-between  header-top-brands">
           <h3 className="title-top-brands">DK TV</h3>
-          <span className="see-more">
-            Xem Thêm
-            <FontAwesomeIcon icon={faAngleRight} className="icon-arrow-right" />
-          </span>
+          <Link to="/video">
+            <span className="see-more">
+              {t("seeMore")}
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                className="icon-arrow-right"
+              />
+            </span>
+          </Link>
         </div>
         <Row className="aricle-container">
           <Col md={7}>

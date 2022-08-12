@@ -1,0 +1,31 @@
+{
+  "content": {
+    "functional": "Hàm",
+    "class": "Lớp",
+    "text": "Đây là văn bản"
+  },
+  "Language": {
+    "functional": "Hàm",
+    "class": "Lớp",
+    "text": "Ngôn Ngữ"
+  },
+  "cooperate": "Hợp Tác",
+  "overview": "Tổng Quan",
+  "aboutdkprivateclub": "Về DK Private Club",
+  "privacyPolicy": "Chính Sách Riêng Tư",
+  "termsAndService": "Điều Khoản Và Dịch Vụ",
+  "help": "Hỗ Trợ",
+  "home": "Trang Chủ",
+  "introduce": "Giới Thiệu",
+  "brand": "Thương Hiệu",
+  "product": "Sản Phẩm",
+  "news": "Tin Tức",
+  "topProduct": "Top Sản Phẩm",
+  "seeMore": "Xem Thêm",
+  "suggestionsforyou": "Gợi Ý Cho Bạn",
+  "topBrand": "Top Thương Hiệu",
+  "hideRemove": "Ẩn Bớt",
+  "searchProduct": "Tìm Kiếm Sản Phẩm Bạn Quan Tâm...",
+  "search": "Tìm Kiếm",
+  "allBrand": "Tất Cả Thương Hiệu"
+}

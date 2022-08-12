@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Form from "react-bootstrap/Form";
 import {
@@ -20,8 +20,11 @@ const ViewProduct = ({
   dataFilterWatch,
   setDataFilterWatch,
   dataAllWatch,
+  dataViewLike,
+  setDataApiLike,
 }) => {
   const [layoutProduct, setLayOutProduct] = useState(true);
+  const [dataRender, setDataRender] = useState();
   const handleLayoutRow = () => {
     setLayOutProduct(true);
   };
@@ -29,6 +32,14 @@ const ViewProduct = ({
     setLayOutProduct(false);
   };
 
+  useEffect(() => {
+    const list = [];
+    for (let i of dataFilterWatch) {
+      list.push({ ...i, like: false });
+    }
+
+    setDataRender(list);
+  }, [dataFilterWatch]);
   return (
     <>
       <div className="d-flex justify-content-between view-product-header flex-wrap">
@@ -61,20 +72,17 @@ const ViewProduct = ({
       <div>
         {layoutProduct ? (
           <ProductViewRow
-            queryFilter={queryFilter}
-            setQueryFilter={setQueryFilter}
-            // setDataViewWatch={setDataViewWatch}
-            // dataViewWatch={dataViewWatch}
-            dataFilterWatch={dataFilterWatch}
-            setDataFilterWatch={setDataFilterWatch}
+            dataViewLike={dataViewLike}
+            setDataApiLike={setDataApiLike}
+            dataRender={dataRender}
+            setDataRender={setDataRender}
           />
         ) : (
           <ProductViewColumn
-            queryFilter={queryFilter}
-            setQueryFilter={setQueryFilter}
-            // setDataViewWatch={setDataViewWatch}
-            dataFilterWatch={dataFilterWatch}
-            setDataFilterWatch={setDataFilterWatch}
+            dataViewLike={dataViewLike}
+            setDataApiLike={setDataApiLike}
+            dataRender={dataRender}
+            setDataRender={setDataRender}
           />
         )}
         <PaginationPage

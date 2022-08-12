@@ -39,6 +39,11 @@ const GetData = {
 
     return dataCollection;
   },
+  GetDataMyFavorite: () => {
+    const dataMyFavorite = useSelector((state) => state.getdataMyFavourite);
+
+    return dataMyFavorite;
+  },
 };
 
 export default GetData;

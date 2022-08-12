@@ -12,6 +12,7 @@ import SliderInTroDuce from "../SliderIntroDuce";
 import DownloadApp from "../DownloadApp";
 
 const ContentIntroDuce = () => {
+  window.scrollTo(0, 0);
   return (
     <div className="introduce-wrapper">
       <Container>

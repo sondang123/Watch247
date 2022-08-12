@@ -16,6 +16,7 @@ import ListNew from "./../ListNew/index";
 const ContentNews = () => {
   const [resultArticle, setResultArticle] = useState();
   const [resultItem, setResultItem] = useState();
+  window.scrollTo(0, 0);
 
   useEffect(() => {
     const fetchApi = async () => {

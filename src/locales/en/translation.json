@@ -1,0 +1,31 @@
+{
+  "content": {
+    "functional": "Functional",
+    "class": "Class",
+    "text": "This is text"
+  },
+  "Language": {
+    "functional": "Functional",
+    "class": "Class",
+    "text": "Language"
+  },
+  "cooperate": "cooperate",
+  "overview": "overview",
+  "aboutdkprivateclub": "About DK Private Club",
+  "privacyPolicy": "Privacy Policy",
+  "termsAndService": "Terms and Service",
+  "help": "Help",
+  "home": "Home",
+  "introduce": "Introduce",
+  "brand": "Brand",
+  "product": "Product",
+  "news": "News",
+  "topProduct": "Top Product",
+  "seeMore": "See More",
+  "suggestionsforyou": "Suggestions for you",
+  "topBrand": "Top Brand",
+  "hideRemove": "Hide Remove",
+  "searchProduct": "Search for products you are interested in...",
+  "search": "Search",
+  "allBrand": "All Brand"
+}

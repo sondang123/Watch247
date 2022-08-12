@@ -11,20 +11,107 @@ import {
 import "./ProductViewClumn.scss";
 import GetData from "../../../../../components/GetData";
 import { Link } from "react-router-dom";
+import WatchService from "./../../../../../Service/WatchService/index";
 
 const ProductViewColumn = ({
-  queryFilter,
-  setQueryFilter,
-  setDataViewWatch,
-  dataViewWatch,
+  dataViewLike,
+  setDataApiLike,
+  dataRender,
+  setDataRender,
 }) => {
   const dataWatch = GetData.GetDataWatch();
-  console.log("dataWatch", dataWatch);
+  const handleFilterLike = (item) => {
+    if (dataViewLike && dataViewLike.length > 0) {
+      const dataRenderCoppy = [...dataRender];
+      for (let i of dataViewLike) {
+        if (i.watchId === item.watchId) {
+          const objIndex = dataRenderCoppy.findIndex(
+            (list) => list.watchId === item.watchId
+          );
+
+          dataRenderCoppy[objIndex].like = true;
+          // setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+          return (
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="icon-heart"
+              style={{ color: "red" }}
+              onClick={(e) => handleMyFavorite(e, item)}
+            />
+          );
+          break;
+        }
+      }
+    }
+
+    return (
+      <FontAwesomeIcon
+        icon={faHeart}
+        className="icon-heart"
+        onClick={(e) => handleMyFavorite(e, item)}
+      />
+    );
+  };
+
+  const handleMyFavorite = (e, item) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (item.like === false) {
+      const dataRenderCoppy = [...dataRender];
+      const objIndex = dataRenderCoppy.findIndex(
+        (list) => list.watchId === item.watchId
+      );
+      dataRenderCoppy[objIndex].like = true;
+      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+
+      const fetchApi = async () => {
+        try {
+          const result = await WatchService.like(item.watchId, {
+            headers: {
+              Authorization:
+                "Bearer" + JSON.parse(localStorage.getItem("token")),
+              // Authorization: "Bearer" + `${token}`,
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json",
+            },
+          });
+          alert("Đã Like !");
+          setDataApiLike(result);
+        } catch (error) {}
+      };
+      fetchApi();
+    } else if (item.like === true) {
+      const dataRenderCoppy = [...dataRender];
+      const objIndex = dataRenderCoppy.findIndex(
+        (list) => list.watchId === item.watchId
+      );
+      dataRenderCoppy[objIndex].like = false;
+      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
+
+      const fetchApi = async () => {
+        try {
+          const result = await WatchService.UnLike(item.watchId, {
+            headers: {
+              Authorization:
+                "Bearer" + JSON.parse(localStorage.getItem("token")),
+              // Authorization: "Bearer" + `${token}`,
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json",
+            },
+          });
+          alert("Đã UnLike !");
+          setDataApiLike(result);
+        } catch (error) {}
+      };
+      fetchApi();
+    }
+  };
 
   return (
     <div className="product-view-column-container">
-      {dataViewWatch &&
-        dataViewWatch.watches.map((item) => (
+      {dataRender &&
+        dataRender.map((item) => (
           <Link to={`/detailproduct/${item.watchId}`} key={item.watchId}>
             <Row className="gx-0 product-view-column-item">
               <Col md={3}>
@@ -44,7 +131,9 @@ const ProductViewColumn = ({
                 <div className="product-column-content">
                   <div className="d-flex justify-content-between product-column-header">
                     <h3>{item.reference.model.brand.name}</h3>
-                    <FontAwesomeIcon icon={faHeart} className="icon-heart" />
+                    {/* <FontAwesomeIcon icon={faHeart} className="icon-heart" /> */}
+
+                    {handleFilterLike(item)}
                   </div>
                   <Row>
                     <Col md={3} xs={6}>

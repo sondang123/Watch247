@@ -9,9 +9,12 @@ import MiscService from "../../../../Service/MiscService";
 import "../TopBrands/TopBrands.scss";
 
 import SliderSuggestion from "./SliderTopProduct";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 // import SliderTopBrands from "../TopBrands/SliderTopBrands";
 
 const TopProduct = () => {
+  const { t } = useTranslation();
   const [resultTopProduct, setResultTopProduct] = useState([]);
   const token = GetData.GetToken();
 
@@ -35,10 +38,10 @@ const TopProduct = () => {
       <Container>
         <div className="top-brands-container">
           <div className="d-flex justify-content-between align-items-center header-top-brands">
-            <h3 className="title-top-brands">Top Sản Phẩm</h3>
+            <h3 className="title-top-brands">{t("topProduct")}</h3>
             <Link to="/products">
               <span className="see-more">
-                Xem Thêm
+                {t("seeMore")}
                 <FontAwesomeIcon
                   icon={faAngleRight}
                   className="icon-arrow-right"
