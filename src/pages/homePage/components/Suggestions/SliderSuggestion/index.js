@@ -18,23 +18,29 @@ import GetData from "../../../../../components/GetData";
 import MiscService from "../../../../../Service/MiscService";
 import { Link } from "react-router-dom";
 import Zoom from "react-reveal/Zoom";
+import Spinner from "react-bootstrap/Spinner";
 
 function SliderSuggestion() {
   const [resultSuggestion, setResultSuggestion] = useState([]);
+  const [loading, setLoading] = useState(true);
   const token = GetData.GetToken();
   useEffect(() => {
     const fetchApi = async () => {
-      const result = await MiscService.getAll({
-        headers: {
-          Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
-          // Authorization: "Bearer" + `${token}`,
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json",
-        },
-      });
-      // setResultBrand(result.data.brands);
+      try {
+        setLoading(true);
+        const result = await MiscService.getAll({
+          headers: {
+            Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
+            // Authorization: "Bearer" + `${token}`,
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        });
+        // setResultBrand(result.data.brands);
 
-      setResultSuggestion(result.data.topWatches);
+        setResultSuggestion(result.data.topWatches);
+        setLoading(false);
+      } catch (error) {}
     };
     fetchApi();
   }, []);
@@ -72,7 +78,10 @@ function SliderSuggestion() {
         },
       }}
     >
-      {resultSuggestion &&
+      {loading ? (
+        <Spinner animation="border" className="d-flex m-auto " />
+      ) : (
+        resultSuggestion &&
         resultSuggestion.length > 0 &&
         resultSuggestion.map((item) => (
           <SwiperSlide key={item.watchId}>
@@ -105,7 +114,8 @@ function SliderSuggestion() {
               </Link>
             </Zoom>
           </SwiperSlide>
-        ))}
+        ))
+      )}
     </Swiper>
   );
 }

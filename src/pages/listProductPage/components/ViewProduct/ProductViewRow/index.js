@@ -14,8 +14,8 @@ import WatchService from "./../../../../../Service/WatchService/index";
 const ProductViewRow = ({
   dataViewLike,
   setDataApiLike,
-  dataRender,
-  setDataRender,
+
+  dataFilterWatch,
 }) => {
   const dispatch = useDispatch();
 
@@ -24,15 +24,8 @@ const ProductViewRow = ({
 
   const handleFilterLike = (item) => {
     if (dataViewLike && dataViewLike.length > 0) {
-      const dataRenderCoppy = [...dataRender];
       for (let i of dataViewLike) {
         if (i.watchId === item.watchId) {
-          const objIndex = dataRenderCoppy.findIndex(
-            (list) => list.watchId === item.watchId
-          );
-
-          dataRenderCoppy[objIndex].like = true;
-          // setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
           return (
             <FontAwesomeIcon
               icon={faHeart}
@@ -45,7 +38,6 @@ const ProductViewRow = ({
         }
       }
     }
-
     return (
       <FontAwesomeIcon
         icon={faHeart}
@@ -58,56 +50,46 @@ const ProductViewRow = ({
   const handleMyFavorite = (e, item) => {
     e.preventDefault();
     e.stopPropagation();
-
-    if (item.like === false) {
-      const dataRenderCoppy = [...dataRender];
-      const objIndex = dataRenderCoppy.findIndex(
-        (list) => list.watchId === item.watchId
-      );
-      dataRenderCoppy[objIndex].like = true;
-      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
-
-      const fetchApi = async () => {
-        try {
-          const result = await WatchService.like(item.watchId, {
-            headers: {
-              Authorization:
-                "Bearer" + JSON.parse(localStorage.getItem("token")),
-              // Authorization: "Bearer" + `${token}`,
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json",
-            },
-          });
-          alert("Đã Like !");
-          setDataApiLike(result);
-        } catch (error) {}
-      };
-      fetchApi();
-    } else if (item.like === true) {
-      const dataRenderCoppy = [...dataRender];
-      const objIndex = dataRenderCoppy.findIndex(
-        (list) => list.watchId === item.watchId
-      );
-      dataRenderCoppy[objIndex].like = false;
-      setDataRender([...dataRender], [dataRenderCoppy[objIndex]]);
-
-      const fetchApi = async () => {
-        try {
-          const result = await WatchService.UnLike(item.watchId, {
-            headers: {
-              Authorization:
-                "Bearer" + JSON.parse(localStorage.getItem("token")),
-              // Authorization: "Bearer" + `${token}`,
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json",
-            },
-          });
-          alert("Đã UnLike !");
-          setDataApiLike(result);
-        } catch (error) {}
-      };
-      fetchApi();
+    // if (dataViewLike && dataViewLike.length > 0) {
+    // }
+    for (let i of dataViewLike) {
+      if (i.watchId === item.watchId) {
+        const fetchApi = async () => {
+          try {
+            const result = await WatchService.UnLike(item.watchId, {
+              headers: {
+                Authorization:
+                  "Bearer" + JSON.parse(localStorage.getItem("token")),
+                // Authorization: "Bearer" + `${token}`,
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json",
+              },
+            });
+            alert("Đã UnLike !");
+            setDataApiLike(result);
+            return;
+          } catch (error) {}
+        };
+        fetchApi();
+        return;
+      }
     }
+    const fetchApi = async () => {
+      try {
+        const result = await WatchService.like(item.watchId, {
+          headers: {
+            Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
+            // Authorization: "Bearer" + `${token}`,
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        });
+        alert("Đã Like !");
+        setDataApiLike(result);
+        // return;
+      } catch (error) {}
+    };
+    fetchApi();
   };
 
   const dataViewRender = GetData.GetDataMyFavorite();
@@ -116,9 +98,10 @@ const ProductViewRow = ({
     <div className="product-view-list">
       <div className="">
         <Row className="gy-4">
-          {dataRender &&
-            typeof dataRender !== "undefined" &&
-            dataRender.map((item) => (
+          {dataFilterWatch &&
+            Object.keys(dataFilterWatch).length > 0 &&
+            typeof dataFilterWatch.watches !== "undefined" &&
+            dataFilterWatch.watches.map((item) => (
               <Col className="col-lg-3 col-md-6 col-12" key={item.watchId}>
                 <Link to={`/detailproduct/${item.watchId}`}>
                   <Card className="product-item">

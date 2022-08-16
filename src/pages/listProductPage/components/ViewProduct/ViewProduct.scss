@@ -26,6 +26,41 @@
 
     color: var(--color-text-title);
   }
+  .search-product {
+    @media screen and( max-width: 500px ) {
+      width: 100%;
+    }
+    .search-product-content {
+      @media screen and( max-width: 500px ) {
+        width: 100%;
+      }
+      .icon-search {
+        position: absolute;
+        font-size: 1.8rem;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 0;
+        padding: 10px;
+      }
+      .icon-slider {
+        font-size: 1.8rem;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+    }
+    .search-product-input {
+      padding: 12px 30px;
+    }
+    .search-product-select {
+      width: 250px;
+      margin-right: 20px;
+      @media screen and( max-width: 500px ) {
+        margin-bottom: 10px;
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+  }
 }
 .view-product-controls {
   span {

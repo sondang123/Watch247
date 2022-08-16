@@ -1,0 +1,110 @@
+.search-product-container {
+  .title-search-product {
+    font-weight: 500;
+    font-size: 2.8r;
+    line-height: 140%;
+    /* or 39px */
+
+    text-align: justify;
+
+    /* Text/Title */
+
+    color: var(--color-text-title);
+    text-align: center;
+    padding: 30px 0 16px 0;
+  }
+  .group-seach-filter {
+    width: 25%;
+    position: relative;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+    .icon-search {
+      position: absolute;
+      font-size: 1.8rem;
+      padding: 10px;
+      z-index: 10;
+      top: 50%;
+      transform: translate(0, -50%);
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    .search-input {
+      padding: 10px 35px;
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+    }
+    .icon-sliders {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      right: 10px;
+      font-size: 1.8rem;
+      z-index: 10;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+.show-filter.filter-product-page {
+  position: absolute;
+  z-index: 10;
+  background: #ffffff;
+  box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  left: 0;
+  right: 0;
+  top: 50px;
+  padding: 12px 35px 35px 35px;
+  .header-show-filter {
+    .icon-close {
+      font-size: 1.8rem;
+      margin-left: auto;
+      display: block;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .content-filter {
+    h2 {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 140%;
+      /* or 25px */
+
+      /* Text/Title */
+
+      color: var(--color-text-title);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .form-select {
+      padding: 10px 10px;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 160%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.01em;
+
+      /* Text/Note */
+
+      color: var(--color-text-note);
+    }
+  }
+}

@@ -12,23 +12,29 @@ import Col from "react-bootstrap/esm/Col";
 import BrandService from "./../../Service/BrandService/index";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
+import Spinner from "react-bootstrap/Spinner";
 
 const BrandPage = () => {
   const { t } = useTranslation();
   const [rusultBrand, setReultBrand] = useState();
+  const [loading, setLoading] = useState(true);
   window.scrollTo(0, 0);
   useEffect(() => {
     const fetchApi = async () => {
-      const result = await BrandService.getAll({
-        headers: {
-          Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
-          // Authorization: "Bearer" + `${token}`,
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json",
-        },
-      });
+      try {
+        setLoading(true);
+        const result = await BrandService.getAll({
+          headers: {
+            Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
+            // Authorization: "Bearer" + `${token}`,
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        });
 
-      setReultBrand(result.data.brands);
+        setReultBrand(result.data.brands);
+        setLoading(false);
+      } catch (error) {}
     };
     fetchApi();
   }, []);
@@ -52,25 +58,29 @@ const BrandPage = () => {
           </div>
 
           <div className="list-all-brand">
-            <Row>
-              <Col lg={1}>
-                <h1>A</h1>
-              </Col>
-              <Col lg={11}>
-                <Row>
-                  {rusultBrand &&
-                    rusultBrand.map((item) => (
-                      <Col lg={3} md={4} xs={6} key={item.brandId}>
-                        <ul>
-                          <Link to={`/listproduct/${item.brandId}`}>
-                            <li>{item.name}</li>
-                          </Link>
-                        </ul>
-                      </Col>
-                    ))}
-                </Row>
-              </Col>
-            </Row>
+            {loading ? (
+              <Spinner animation="border" className="d-flex m-auto " />
+            ) : (
+              <Row>
+                <Col lg={1}>
+                  <h1>A</h1>
+                </Col>
+                <Col lg={11}>
+                  <Row>
+                    {rusultBrand &&
+                      rusultBrand.map((item) => (
+                        <Col lg={3} md={4} xs={6} key={item.brandId}>
+                          <ul>
+                            <Link to={`/listproduct/${item.brandId}`}>
+                              <li>{item.name}</li>
+                            </Link>
+                          </ul>
+                        </Col>
+                      ))}
+                  </Row>
+                </Col>
+              </Row>
+            )}
           </div>
         </Container>
       </div>

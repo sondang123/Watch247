@@ -13,6 +13,11 @@ const WatchService = {
     const url = `/watch/?page=${params.page}&limit=${params.limit}`;
     return request.get(url, headers);
   },
+  searchWatch: (params, headers) => {
+    const url = `/watch/?page=${params.page}&limit=${params.limit}&brandId=${params.brandId}&modelId=${params.modelId}&referenceId=${params.referenceId}&q=${params.q}`;
+    return request.get(url, headers);
+  },
+
   searchWatchBrand: (params, headers) => {
     const url = `/watch/?page=${params.page}&limit=${params.limit}&brandId=${params.brandId}`;
     return request.get(url, headers);

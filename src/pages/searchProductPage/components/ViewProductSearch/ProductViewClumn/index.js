@@ -16,7 +16,7 @@ import WatchService from "./../../../../../Service/WatchService/index";
 const ProductViewColumn = ({
   dataViewLike,
   setDataApiLike,
-  dataFilterWatch,
+  dataSearchWatch,
 }) => {
   const handleFilterLike = (item) => {
     if (dataViewLike && dataViewLike.length > 0) {
@@ -34,6 +34,7 @@ const ProductViewColumn = ({
         }
       }
     }
+
     return (
       <FontAwesomeIcon
         icon={faHeart}
@@ -90,10 +91,9 @@ const ProductViewColumn = ({
 
   return (
     <div className="product-view-column-container">
-      {dataFilterWatch &&
-        Object.keys(dataFilterWatch).length > 0 &&
-        typeof dataFilterWatch.watches !== "undefined" &&
-        dataFilterWatch.watches.map((item) => (
+      {dataSearchWatch &&
+        Object.keys(dataSearchWatch).length > 0 &&
+        dataSearchWatch.watches.map((item) => (
           <Link to={`/detailproduct/${item.watchId}`} key={item.watchId}>
             <Row className="gx-0 product-view-column-item">
               <Col md={3}>

@@ -12,10 +12,12 @@ import Bracdcrumb from "./../../components/Breadcrumb/index";
 
 import { useParams } from "react-router-dom";
 import BrandService from "./../../Service/BrandService/index";
+import Spinner from "react-bootstrap/Spinner";
 const ListProductPage = () => {
   let { brandId } = useParams();
   const dispatch = useDispatch();
   // const [dataViewWatch, setDataViewWatch] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [dataApiLike, setDataApiLike] = useState();
   const [dataViewLike, setDataViewLike] = useState();
 
@@ -23,46 +25,23 @@ const ListProductPage = () => {
     page: 0,
     limit: 4,
     brandId: brandId,
+
+    modelId: null,
+    referenceId: null,
+    q: "",
   });
 
-  const [dataAllWatch, setDataAllWatch] = useState([]);
-  const [dataFilterWatch, setDataFilterWatch] = useState([]);
+  const [dataFilterWatch, setDataFilterWatch] = useState();
   const [rusultBrand, setReultBrand] = useState([]);
   const [nameBrand, setNameBrand] = useState();
 
   // window.scrollTo(0, 0);
-  useEffect(() => {
-    const fetchApi = async () => {
-      try {
-        const result = await WatchService.searchWatchBrand(
-          { brandId: brandId },
-          {
-            headers: {
-              Authorization:
-                "Bearer" + JSON.parse(localStorage.getItem("token")),
-              // Authorization: "Bearer" + `${token}`,
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json",
-            },
-          }
-        );
-
-        setDataAllWatch(result.data.watches);
-
-        // navigate("/", { replace: true });
-      } catch (err) {
-        alert(err.message);
-      }
-
-      // setResultBrand(result.data.brands);
-    };
-    fetchApi();
-  }, []);
 
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const result = await WatchService.searchWatchBrand(queryFilter, {
+        setLoading(true);
+        const result = await WatchService.searchWatch(queryFilter, {
           headers: {
             Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
             // Authorization: "Bearer" + `${token}`,
@@ -70,15 +49,12 @@ const ListProductPage = () => {
             Accept: "application/json",
           },
         });
-        setDataFilterWatch(result.data.watches);
-        // setDataViewWatch(result.data);
 
-        // navigate("/", { replace: true });
+        setDataFilterWatch(result.data);
+        setLoading(false);
       } catch (err) {
         alert(err.message);
       }
-
-      // setResultBrand(result.data.brands);
     };
     fetchApi();
   }, [queryFilter]);
@@ -127,17 +103,18 @@ const ListProductPage = () => {
       <div style={{ backgroundColor: "#f5f5f5", paddingTop: 150 }}>
         <Container>
           <Bracdcrumb nameBrand={nameBrand} />
-          <ViewProduct
-            queryFilter={queryFilter}
-            setQueryFilter={setQueryFilter}
-            // setDataViewWatch={setDataViewWatch}
-            // dataViewWatch={dataViewWatch}
-            dataFilterWatch={dataFilterWatch}
-            setDataFilterWatch={setDataFilterWatch}
-            dataAllWatch={dataAllWatch}
-            dataViewLike={dataViewLike}
-            setDataApiLike={setDataApiLike}
-          />
+          {loading ? (
+            <Spinner animation="border" className="d-flex m-auto " />
+          ) : (
+            <ViewProduct
+              queryFilter={queryFilter}
+              setQueryFilter={setQueryFilter}
+              dataFilterWatch={dataFilterWatch}
+              setDataFilterWatch={setDataFilterWatch}
+              dataViewLike={dataViewLike}
+              setDataApiLike={setDataApiLike}
+            />
+          )}
           <div style={{ paddingTop: 80 }}>
             <h2 className="slider-product-title">Gợi ý cho bạn</h2>
             <SliderProduct

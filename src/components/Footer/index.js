@@ -30,7 +30,6 @@ const Footer = () => {
     localStorage.getItem("language")
       ? JSON.parse(localStorage.getItem("language"))
       : listLanguage[0]
-    // listLanguage[0]
   );
 
   const handleLanguageChange = (item) => {

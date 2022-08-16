@@ -1,33 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import { useParams } from "react-router-dom";
 
 const PaginationPage = ({
   queryFilter,
   setQueryFilter,
-  setDataFilterWatch,
-  dataFilterWatch,
+  setDataSearchWatch,
+  dataSearchWatch,
+  // dataAllWatch,
 }) => {
   let { brandId } = useParams();
   const numberPage = [];
   const totalPages = Math.ceil(
-    dataFilterWatch && dataFilterWatch.total / queryFilter.limit - 1
+    dataSearchWatch && dataSearchWatch.total / queryFilter.limit - 1
   );
 
   const handlePageNext = () => {
-    setQueryFilter({ ...queryFilter, page: queryFilter.page + 1 });
+    setQueryFilter({
+      ...queryFilter,
+      page: queryFilter.page + 1,
+    });
   };
   const handlePagePrev = () => {
-    setQueryFilter({ ...queryFilter, page: queryFilter.page - 1 });
+    setQueryFilter({
+      ...queryFilter,
+      page: queryFilter.page - 1,
+    });
   };
 
   const handlePage = (page) => {
     setQueryFilter({
       ...queryFilter,
       page: page,
+      limit: 4,
     });
   };
-  if (totalPages && dataFilterWatch && queryFilter) {
+
+  if (totalPages && dataSearchWatch && queryFilter) {
     for (let i = 0; i <= totalPages; i++) {
       numberPage.push(i);
     }
@@ -53,7 +62,7 @@ const PaginationPage = ({
 
         <Pagination.Next
           onClick={handlePageNext}
-          disabled={queryFilter.page === totalPages}
+          disabled={queryFilter.page >= totalPages}
         >
           next
         </Pagination.Next>

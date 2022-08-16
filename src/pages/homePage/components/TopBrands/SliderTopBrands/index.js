@@ -7,6 +7,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "../TopBrands.scss";
+import { Link } from "react-router-dom";
 
 // import { images } from "~/assets/images";
 const SliderTopBrands = ({ resultBrand, setResultBrand }) => {
@@ -45,15 +46,17 @@ const SliderTopBrands = ({ resultBrand, setResultBrand }) => {
       >
         {resultBrand.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="item-brand">
-              <div className="item-brand-img">
-                <img
-                  src={"https://dnk.mdcsoftware.com.vn/" + item.logo}
-                  alt="brands"
-                />
+            <Link to={`/listproduct/${item.brandId}`}>
+              <div className="item-brand">
+                <div className="item-brand-img">
+                  <img
+                    src={"https://dnk.mdcsoftware.com.vn/" + item.logo}
+                    alt="brands"
+                  />
+                </div>
+                <h5 className="title-item-brand">{item.name}</h5>
               </div>
-              <h5 className="title-item-brand">{item.name}</h5>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

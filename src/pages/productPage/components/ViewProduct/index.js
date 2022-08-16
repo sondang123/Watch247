@@ -5,12 +5,16 @@ import {
   faBars,
   faEllipsisVertical,
   faGripVertical,
+  faSearch,
+  faSliders,
 } from "@fortawesome/free-solid-svg-icons";
 import "./ViewProduct.scss";
 import ProductViewRow from "./ProductViewRow";
 import SliderProduct from "../SliderProduct";
 import ProductViewColumn from "./ProductViewClumn";
 import PaginationPage from "./PaginationPage";
+import FilterProduct from "./../../../searchProductPage/components/ViewProductSearch/Filter/index";
+import Spinner from "react-bootstrap/Spinner";
 
 const ViewProduct = ({
   queryFilter,
@@ -19,25 +23,34 @@ const ViewProduct = ({
   dataViewWatch,
   dataViewLike,
   setDataApiLike,
+  loading,
 }) => {
   const [layoutProduct, setLayOutProduct] = useState(true);
-  const [dataRender, setDataRender] = useState();
+  const [showFilters, setShowFilters] = useState(false);
+
   const handleLayoutRow = () => {
     setLayOutProduct(true);
   };
   const handleLayoutColumn = () => {
     setLayOutProduct(false);
   };
-  console.log("dataViewWatch", dataViewWatch);
-  useEffect(() => {
-    const list = [];
-    if (Object.keys(dataViewWatch).length > 0) {
-      for (let i of dataViewWatch.watches) {
-        list.push({ ...i, like: false });
-      }
-      setDataRender(list);
+  const handleChangeSearch = (e) => {
+    setQueryFilter({ ...queryFilter, q: e.target.value });
+  };
+  const handleChangeSort = (e) => {
+    if (e.target.value == 1) {
+      const downSort = dataViewWatch.watches.sort(
+        (a, b) => a.retailPrice - b.retailPrice
+      );
+      setDataViewWatch({ watches: downSort });
+    } else {
+      const downSort = dataViewWatch.watches.sort(
+        (a, b) => b.retailPrice - a.retailPrice
+      );
+      setDataViewWatch({ watches: downSort });
     }
-  }, [dataViewWatch]);
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between view-product-header flex-wrap">
@@ -54,37 +67,56 @@ const ViewProduct = ({
             onClick={handleLayoutColumn}
           />
         </div>
-        <div className="d-flex w-lg-25 align-items-center">
-          <p className="w-100">Sắp xếp theo:</p>
-          <Form.Select
-            aria-label="Default select example"
-            className="select-filter-view"
-          >
-            <option>Sự liên quan</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </Form.Select>
+        <div className="d-flex flex-wrap search-product">
+          <div className="d-flex  align-items-center  search-product-select">
+            <p className="w-100">Sắp xếp theo:</p>
+            <Form.Select
+              aria-label="Default select example"
+              className="select-filter-view"
+              onChange={(e) => handleChangeSort(e)}
+            >
+              <option value="1">A-Z</option>
+              <option value="2">Z-A</option>
+            </Form.Select>
+          </div>
+          <div className="d-flex  align-items-center search-product-content  position-relative">
+            <FontAwesomeIcon icon={faSearch} className="icon-search" />
+            <Form.Control
+              type="text"
+              placeholder="Tìm Kiếm trong brand ..."
+              className="form-control-lg search-product-input"
+              onChange={(e) => handleChangeSearch(e)}
+            />
+            <FontAwesomeIcon
+              icon={faSliders}
+              className="icon-slider"
+              onClick={() => setShowFilters(!showFilters)}
+            />
+            {showFilters && (
+              <FilterProduct
+                setShowFilters={setShowFilters}
+                showFilters={showFilters}
+                queryFilter={queryFilter}
+                setQueryFilter={setQueryFilter}
+              />
+            )}
+          </div>
         </div>
       </div>
       <div>
-        {layoutProduct ? (
+        {loading ? (
+          <Spinner animation="border" className="d-flex m-auto " />
+        ) : layoutProduct ? (
           <ProductViewRow
-            dataRender={dataRender}
             setDataApiLike={setDataApiLike}
             dataViewLike={dataViewLike}
-            setDataRender={setDataRender}
+            dataViewWatch={dataViewWatch}
           />
         ) : (
           <ProductViewColumn
-            // queryFilter={queryFilter}
-            // setQueryFilter={setQueryFilter}
-            // setDataViewWatch={setDataViewWatch}
-            // dataViewWatch={dataViewWatch}
-            dataRender={dataRender}
+            dataViewWatch={dataViewWatch}
             setDataApiLike={setDataApiLike}
             dataViewLike={dataViewLike}
-            setDataRender={setDataRender}
           />
         )}
         <PaginationPage

@@ -10,6 +10,7 @@ import ProductFilter from "./components/ProductFilter";
 import ViewProduct from "./components/ViewProduct";
 import WatchService from "./../../Service/WatchService/index";
 import SliderProduct from "./../listProductPage/components/SliderProduct/index";
+import Spinner from "react-bootstrap/Spinner";
 
 const ProDuctPages = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,12 @@ const ProDuctPages = () => {
   const [queryFilter, setQueryFilter] = useState({
     page: 0,
     limit: 4,
+    brandId: null,
+    modelId: null,
+    referenceId: null,
+    q: "",
   });
+  const [loading, setLoading] = useState(true);
 
   // window.scrollTo(0, 0);
   useEffect(() => {
@@ -52,7 +58,8 @@ const ProDuctPages = () => {
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const result = await WatchService.search(queryFilter, {
+        setLoading(true);
+        const result = await WatchService.searchWatch(queryFilter, {
           headers: {
             Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
             // Authorization: "Bearer" + `${token}`,
@@ -61,6 +68,7 @@ const ProDuctPages = () => {
           },
         });
         setDataViewWatch(result.data);
+        setLoading(false);
 
         // navigate("/", { replace: true });
       } catch (err) {
@@ -104,14 +112,19 @@ const ProDuctPages = () => {
             // like
             dataViewLike={dataViewLike}
             setDataApiLike={setDataApiLike}
+            loading={loading}
           />
           <div style={{ paddingTop: 80 }}>
             <h2 className="slider-product-title">Gợi ý cho bạn</h2>
-            <SliderProduct
-              dataViewLike={dataViewLike}
-              setDataApiLike={setDataApiLike}
-              dataApiLike={dataApiLike}
-            />
+            {loading ? (
+              <Spinner animation="border" className="d-flex m-auto " />
+            ) : (
+              <SliderProduct
+                dataViewLike={dataViewLike}
+                setDataApiLike={setDataApiLike}
+                dataApiLike={dataApiLike}
+              />
+            )}
           </div>
         </Container>
         <Footer />

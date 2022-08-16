@@ -25,6 +25,10 @@ const ReferenceService = {
     const url = `/reference/?q=${q}`;
     return request.get(url, headers);
   },
+  searchByModel: (modelId, headers) => {
+    const url = `/reference/?modelId=${modelId}`;
+    return request.get(url, headers);
+  },
   // search: (paramq, headers) => {
   //   const url = `/watch/?page=${params.page}&limit=${params.limit}`;
   //   return request.get(url, headers);

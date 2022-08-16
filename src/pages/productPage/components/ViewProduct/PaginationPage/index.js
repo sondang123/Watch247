@@ -11,22 +11,16 @@ const PaginationPage = ({
   const totalPages = Math.ceil(dataViewWatch.total / queryFilter.limit - 1);
 
   const handlePageNext = () => {
-    setQueryFilter({
-      page: queryFilter.page + 1,
-      limit: 4,
-    });
+    setQueryFilter({ ...queryFilter, page: queryFilter.page + 1 });
   };
   const handlePagePrev = () => {
-    setQueryFilter({
-      page: queryFilter.page - 1,
-      limit: 4,
-    });
+    setQueryFilter({ ...queryFilter, page: queryFilter.page - 1 });
   };
 
   const handlePage = (page) => {
     setQueryFilter({
+      ...queryFilter,
       page: page,
-      limit: 4,
     });
   };
   if (totalPages && dataViewWatch && queryFilter) {

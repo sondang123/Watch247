@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const HelpPage = () => {
-  window.scrollTo(0, 1000);
+  window.scrollTo(0, 0);
   return (
     <div className="help-page-container">
       <Header />

@@ -14,6 +14,7 @@ import ListProductPage from "./../../pages/listProductPage/index";
 import DetailNewPage from "./../../pages/detailNewPage/index";
 import VideoPage from "./../../pages/videoPages/index";
 import HelpPage from "./../../pages/helpPage/index";
+import SearchProductPage from "./../../pages/searchProductPage/index";
 
 const HomeRouter = () => {
   const auth = GetData.GetAuth();
@@ -42,6 +43,10 @@ const HomeRouter = () => {
       />
       <Route path="/video" element={<VideoPage />} />
       <Route path="/help" element={<HelpPage />} />
+      <Route
+        path="/searchproduct/:nameSearch"
+        element={<SearchProductPage />}
+      />
     </Routes>
   );
 };

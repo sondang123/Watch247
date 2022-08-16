@@ -13,22 +13,29 @@ import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 // import SliderTopBrands from "../TopBrands/SliderTopBrands";
 
+import Spinner from "react-bootstrap/Spinner";
+
 const TopProduct = () => {
   const { t } = useTranslation();
   const [resultTopProduct, setResultTopProduct] = useState([]);
   const token = GetData.GetToken();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchApi = async () => {
-      const result = await MiscService.getAll({
-        headers: {
-          Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
-          // Authorization: "Bearer" + `${token}`,
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json",
-        },
-      });
-      setResultTopProduct(result.data.topWatches);
+      try {
+        setLoading(true);
+        const result = await MiscService.getAll({
+          headers: {
+            Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
+            // Authorization: "Bearer" + `${token}`,
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        });
+        setResultTopProduct(result.data.topWatches);
+        setLoading(false);
+      } catch (error) {}
     };
     fetchApi();
   }, []);
@@ -51,10 +58,14 @@ const TopProduct = () => {
           </div>
           <div className="content-top-brands content-suggestion">
             <div className="list-item-brands">
-              <SliderSuggestion
-                resultTopProduct={resultTopProduct}
-                setResultTopProduct={setResultTopProduct}
-              />
+              {loading ? (
+                <Spinner animation="border" className="d-flex m-auto" />
+              ) : (
+                <SliderSuggestion
+                  resultTopProduct={resultTopProduct}
+                  setResultTopProduct={setResultTopProduct}
+                />
+              )}
             </div>
           </div>
         </div>

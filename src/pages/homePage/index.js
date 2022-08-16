@@ -23,6 +23,7 @@ const HomePage = () => {
         <Fade left>
           <TopProduct />
         </Fade>
+
         <Fade right delay={1000}>
           <TopBrands />
         </Fade>

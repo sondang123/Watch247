@@ -15,23 +15,29 @@ import GetData from "../../../../components/GetData";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
+import Spinner from "react-bootstrap/Spinner";
 
 const TopBrands = () => {
   const { t } = useTranslation();
   const [resultBrand, setResultBrand] = useState([]);
   const [showListBrand, setShowListBrand] = useState(false);
   const token = GetData.GetToken();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchApi = async () => {
-      const result = await BrandService.getAll({
-        headers: {
-          Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
-          // Authorization: "Bearer" + `${token}`,
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json",
-        },
-      });
-      setResultBrand(result.data.brands);
+      try {
+        setLoading(true);
+        const result = await BrandService.getAll({
+          headers: {
+            Authorization: "Bearer" + JSON.parse(localStorage.getItem("token")),
+            // Authorization: "Bearer" + `${token}`,
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        });
+        setResultBrand(result.data.brands);
+        setLoading(false);
+      } catch (error) {}
     };
     fetchApi();
   }, []);
@@ -57,7 +63,9 @@ const TopBrands = () => {
           </div>
           <div className="content-top-brands">
             <div className="list-item-brands">
-              {showListBrand ? (
+              {loading ? (
+                <Spinner animation="border" className="d-flex m-auto " />
+              ) : showListBrand ? (
                 <ListTopBrand
                   resultBrand={resultBrand}
                   setResultBrand={setResultBrand}
