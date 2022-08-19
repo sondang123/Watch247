@@ -27,6 +27,7 @@ function Header(banner) {
   const { t } = useTranslation();
   const [showBanner, setShowBanner] = useState(banner.banner);
   const [showNotification, setShowNotification] = useState(false);
+  const [nameSearch, setNameSearch] = useState("");
   // let navigate = useNavigate();
   const expand = "lg";
   const handleShowBanner = () => {
@@ -175,7 +176,7 @@ function Header(banner) {
                       <div className="d-flex justify-content-between view-product-header flex-wrap">
                         <div className="d-flex flex-wrap search-product">
                           <div className="d-flex  align-items-center search-product-content  position-relative">
-                            <Link to="/searchProduct/undefined">
+                            <Link to={`/searchProduct/${nameSearch}`}>
                               <FontAwesomeIcon
                                 icon={faSearch}
                                 className="icon-search"
@@ -185,6 +186,7 @@ function Header(banner) {
                               type="text"
                               placeholder="Tìm Kiếm Sản Phẩm"
                               className="form-control-lg search-product-input"
+                              onChange={(e) => setNameSearch(e.target.value)}
                             />
                           </div>
                         </div>

@@ -10,7 +10,7 @@ const ContentChat = ({ listMessage }) => {
 
   useEffect(() => {
     divRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [listMessage]);
 
   return (
     <div className="content-chat-container " id="contentChat-id">

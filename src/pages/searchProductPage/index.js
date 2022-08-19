@@ -17,6 +17,7 @@ const SearchProductPage = () => {
     modelId: null,
     referenceId: null,
   });
+  window.scrollTo(0, 0);
 
   return (
     <div>
