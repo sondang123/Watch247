@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
@@ -6,17 +7,18 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import "./Login.scss";
 
 import { sha256, sha224 } from "js-sha256";
-
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import AccountService from "../../../Service/AccountService";
 import { useDispatch, useSelector } from "react-redux";
 import GetData from "./../../GetData/index";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 function Login() {
   const [showPassWord, setShowPassWord] = useState(false);
   const [resultAccount, setResultAccount] = useState([]);
+  const [socketUrl, setSocketUrl] = useState("wss://dnk.mdcsoftware.com.vn/ws");
+  const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
   let navigate = useNavigate();
 
   const handleShowPassword = () => {
@@ -38,6 +40,11 @@ function Login() {
   } = useForm();
   const onSubmit = (data) => {
     const dataSubmit = {
+      username: data.username,
+      password: sha256(data.password),
+    };
+    const dataConect = {
+      command: "login",
       username: data.username,
       password: sha256(data.password),
     };
@@ -65,6 +72,7 @@ function Login() {
       // console.log("ket qua ApI ", result.data.account.accessToken);
     };
     fetchApi();
+    sendMessage(JSON.stringify(dataConect));
   };
   return (
     <div className="login-wrapper">

@@ -6,9 +6,10 @@ const PaginationPage = ({
   setQueryFilter,
   setDataViewWatch,
   dataViewWatch,
+  totalPage,
 }) => {
   const numberPage = [];
-  const totalPages = Math.ceil(dataViewWatch.total / queryFilter.limit - 1);
+  const totalPages = Math.ceil(totalPage / queryFilter.limit - 1);
 
   const handlePageNext = () => {
     setQueryFilter({ ...queryFilter, page: queryFilter.page + 1 });

@@ -2,8 +2,14 @@
   background-color: #fff;
   height: 100%;
   padding: 50px 0;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
   .profile-container-content {
     padding: 50px 100px;
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
   }
   .profile-title {
     font-weight: 700;

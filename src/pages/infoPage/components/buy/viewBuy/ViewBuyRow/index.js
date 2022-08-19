@@ -64,8 +64,8 @@ const ViewBuyRow = () => {
         <Row className="gy-4">
           {dataBuy.length > 0 &&
             typeof dataBuy !== "undefined" &&
-            dataBuy.map((item) => (
-              <Col className="col-lg-3 col-md-6">
+            dataBuy.map((item, index) => (
+              <Col className="col-lg-3 col-md-6" key={index}>
                 <Card className="product-item position-relative">
                   <div className="product-item-img">
                     <Card.Img

@@ -12,7 +12,7 @@ import Bracdcrumb from "./../../components/Breadcrumb/index";
 
 import { useParams } from "react-router-dom";
 import BrandService from "./../../Service/BrandService/index";
-import Spinner from "react-bootstrap/Spinner";
+
 const ListProductPage = () => {
   let { brandId } = useParams();
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ const ListProductPage = () => {
   const [dataFilterWatch, setDataFilterWatch] = useState();
   const [rusultBrand, setReultBrand] = useState([]);
   const [nameBrand, setNameBrand] = useState();
+  const [totalPage, setTotalPage] = useState();
 
   // window.scrollTo(0, 0);
 
@@ -51,6 +52,7 @@ const ListProductPage = () => {
         });
 
         setDataFilterWatch(result.data);
+        setTotalPage(result.data.total);
         setLoading(false);
       } catch (err) {
         alert(err.message);
@@ -103,18 +105,18 @@ const ListProductPage = () => {
       <div style={{ backgroundColor: "#f5f5f5", paddingTop: 150 }}>
         <Container>
           <Bracdcrumb nameBrand={nameBrand} />
-          {loading ? (
-            <Spinner animation="border" className="d-flex m-auto " />
-          ) : (
-            <ViewProduct
-              queryFilter={queryFilter}
-              setQueryFilter={setQueryFilter}
-              dataFilterWatch={dataFilterWatch}
-              setDataFilterWatch={setDataFilterWatch}
-              dataViewLike={dataViewLike}
-              setDataApiLike={setDataApiLike}
-            />
-          )}
+
+          <ViewProduct
+            queryFilter={queryFilter}
+            setQueryFilter={setQueryFilter}
+            dataFilterWatch={dataFilterWatch}
+            setDataFilterWatch={setDataFilterWatch}
+            dataViewLike={dataViewLike}
+            setDataApiLike={setDataApiLike}
+            loading={loading}
+            totalPage={totalPage}
+          />
+
           <div style={{ paddingTop: 80 }}>
             <h2 className="slider-product-title">Gợi ý cho bạn</h2>
             <SliderProduct

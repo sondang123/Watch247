@@ -8,6 +8,7 @@ import {
   faMagnifyingGlass,
   faRightFromBracket,
   faBell,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Header.scss";
 import { useState } from "react";
@@ -20,6 +21,7 @@ import Notification from "./Notification/index";
 
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
+import Form from "react-bootstrap/Form";
 
 function Header(banner) {
   const { t } = useTranslation();
@@ -105,7 +107,7 @@ function Header(banner) {
                       {!banner.banner && (
                         <FontAwesomeIcon
                           icon={faMagnifyingGlass}
-                          className="icon-search header-item "
+                          className="icon-search header-item d-none d-lg-block"
                           onClick={handleShowBanner}
                         />
                       )}
@@ -118,11 +120,12 @@ function Header(banner) {
                         {showNotification && <Notification />}
                       </div>
                       <Link to="/infoPage">
-                        <img
-                          src="../../assets/icon/ic_tabbar_account_normal@2x.png"
-                          alt="ic_tabbar_account_normal"
-                          style={{ width: 18 }}
-                        />
+                        <div style={{ width: 18 }}>
+                          <img
+                            src="../../assets/icon/ic_tabbar_account_normal@2x.png"
+                            alt="ic_tabbar_account_normal"
+                          />
+                        </div>
                       </Link>
 
                       {authLogin ? ( // <Nav.Link href="#">Sơn Đặng</Nav.Link>
@@ -137,21 +140,21 @@ function Header(banner) {
                           <Dropdown.Menu className="dropdown-menu-list">
                             <Link
                               to="/infoPage"
-                              className="header-item d-block ps-0 pt-3"
+                              className="header-item d-block ps-2 pt-3"
                             >
                               Info
                             </Link>
-                            {/* <Dropdown.Item className="header-item"></Dropdown.Item> */}
+
                             <Link
                               to="/register"
-                              className="header-item d-block ps-0 pt-3"
+                              className="header-item d-block ps-2 pt-3"
                             >
                               Dang ky
                             </Link>
-                            {/* <Dropdown.Item className="header-item"></Dropdown.Item> */}
+
                             <div
                               onClick={handleLogout}
-                              className="header-item ps-0 pt-3"
+                              className="header-item ps-2 pt-3"
                             >
                               <FontAwesomeIcon
                                 icon={faRightFromBracket}
@@ -168,6 +171,25 @@ function Header(banner) {
                         </>
                       )}
                     </span>
+                    <div className="d-lg-none ">
+                      <div className="d-flex justify-content-between view-product-header flex-wrap">
+                        <div className="d-flex flex-wrap search-product">
+                          <div className="d-flex  align-items-center search-product-content  position-relative">
+                            <Link to="/searchProduct/undefined">
+                              <FontAwesomeIcon
+                                icon={faSearch}
+                                className="icon-search"
+                              />
+                            </Link>
+                            <Form.Control
+                              type="text"
+                              placeholder="Tìm Kiếm Sản Phẩm"
+                              className="form-control-lg search-product-input"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Nav>
                 </Offcanvas.Body>
               </div>

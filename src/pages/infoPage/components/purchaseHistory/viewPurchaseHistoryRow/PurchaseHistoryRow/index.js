@@ -52,7 +52,7 @@ const PurchaseHistoryRow = () => {
     <div className="product-view-list collection-view-row">
       {dataCart && dataCart.length > 0 ? (
         <>
-          <div className="d-flex justify-content-between view-product-header header-colection">
+          <div className="d-flex justify-content-between view-product-header header-colection flex-wrap">
             <div className="d-flex align-items-center view-product-controls ">
               <p>View</p>
               <span className="icon-grid" onClick={handleLayoutRow}>
@@ -62,7 +62,7 @@ const PurchaseHistoryRow = () => {
               </span>
               <FontAwesomeIcon icon={faBars} className="icon-bars" />
             </div>
-            <div className="d-flex w-25 align-items-center">
+            <div className="d-flex w-lg-25 align-items-center">
               <p className="w-100">Sắp xếp theo:</p>
               <Form.Select
                 aria-label="Default select example"
@@ -75,16 +75,16 @@ const PurchaseHistoryRow = () => {
               </Form.Select>
             </div>
           </div>
-
           <div className="content-colection-view">
             <Row className="gy-4">
               {dataCart &&
                 typeof dataCart !== "undefined" &&
-                dataCart.map((item) => (
+                dataCart.map((item, index) => (
                   <Col
                     className="col-lg-3 col-md-6"
                     // onClick={() => setModalShowDetailBuy(true)}
                     onClick={() => handleShow(item)}
+                    key={index}
                   >
                     <Card className="product-item position-relative">
                       <div className="product-item-img">

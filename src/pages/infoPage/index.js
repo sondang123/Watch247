@@ -23,6 +23,7 @@ import PurchaseHistoryRow from "./components/purchaseHistory/viewPurchaseHistory
 import ViewBuyRow from "./components/buy/viewBuy/ViewBuyRow/index";
 import Profile from "./components/Profile/index";
 import ViewLikeRow from "./components/love/viewLove/ViewLoveRow/index";
+import Message from "./components/message/index";
 
 const InfoPage = () => {
   window.scrollTo(0, 0);
@@ -84,7 +85,7 @@ const InfoPage = () => {
                         icon={faEnvelope}
                         className="icon-nav-info"
                       />
-                      Trung tâm hỗ trợ
+                      Tin Nhắn
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
@@ -107,7 +108,7 @@ const InfoPage = () => {
                     <ViewLikeRow />
                   </Tab.Pane>
                   <Tab.Pane eventKey="sixth">
-                    <h3>b</h3>
+                    <Message />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

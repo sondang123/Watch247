@@ -8,7 +8,7 @@ const persistConfig = {
   key: "root",
   storage: storage,
   stateReconciler: autoMergeLevel2, // Xem thêm tại mục "Quá trình merge".
-  blacklist: ["getDataWatch"],
+  blacklist: ["getDataWatch", "getdataMessage"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

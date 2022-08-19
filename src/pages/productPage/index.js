@@ -27,6 +27,7 @@ const ProDuctPages = () => {
     q: "",
   });
   const [loading, setLoading] = useState(true);
+  const [totalPage, setTotalPage] = useState();
 
   // window.scrollTo(0, 0);
   useEffect(() => {
@@ -68,14 +69,12 @@ const ProDuctPages = () => {
           },
         });
         setDataViewWatch(result.data);
-        setLoading(false);
+        setTotalPage(result.data.total);
 
-        // navigate("/", { replace: true });
+        setLoading(false);
       } catch (err) {
         alert(err.message);
       }
-
-      // setResultBrand(result.data.brands);
     };
     fetchApi();
   }, [queryFilter]);
@@ -113,6 +112,7 @@ const ProDuctPages = () => {
             dataViewLike={dataViewLike}
             setDataApiLike={setDataApiLike}
             loading={loading}
+            totalPage={totalPage}
           />
           <div style={{ paddingTop: 80 }}>
             <h2 className="slider-product-title">Gợi ý cho bạn</h2>

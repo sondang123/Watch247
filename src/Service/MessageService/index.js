@@ -1,20 +1,24 @@
 import request from "../../utils/request";
 
-const MiscService = {
+const MessageService = {
   getAll: (headers) => {
-    const url = `/misc/discover`;
+    const url = `/message`;
+    return request.get(url, headers);
+  },
+  getOne: (headers) => {
+    const url = `/message`;
+    return request.get(url, headers);
+  },
+  getMy: (headers) => {
+    const url = `/message/my`;
     return request.get(url, headers);
   },
   post: (params) => {
-    const url = "/apps";
+    const url = "/message";
     return request.post(url, params);
   },
-  upload: (params, headers) => {
-    const url = "/misc/upload";
-    return request.post(url, params, headers);
-  },
   put: (id, params) => {
-    const url = `/apps/${id}`;
+    const url = `/message/${id}`;
     return request.put(url, params);
   },
   delete: (id) => {
@@ -31,4 +35,4 @@ const MiscService = {
   },
 };
 
-export default MiscService;
+export default MessageService;

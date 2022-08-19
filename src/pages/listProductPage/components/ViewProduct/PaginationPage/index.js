@@ -7,11 +7,12 @@ const PaginationPage = ({
   setQueryFilter,
   setDataFilterWatch,
   dataFilterWatch,
+  totalPage,
 }) => {
   let { brandId } = useParams();
   const numberPage = [];
   const totalPages = Math.ceil(
-    dataFilterWatch && dataFilterWatch.total / queryFilter.limit - 1
+    dataFilterWatch && totalPage / queryFilter.limit - 1
   );
 
   const handlePageNext = () => {

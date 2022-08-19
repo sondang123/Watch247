@@ -15,6 +15,7 @@ import ProductViewColumn from "./ProductViewClumn";
 import PaginationPage from "./PaginationPage";
 import FilterProduct from "./../../../searchProductPage/components/ViewProductSearch/Filter/index";
 import WatchService from "./../../../../Service/WatchService/index";
+import Spinner from "react-bootstrap/Spinner";
 
 const ViewProduct = ({
   queryFilter,
@@ -25,6 +26,8 @@ const ViewProduct = ({
 
   dataViewLike,
   setDataApiLike,
+  loading,
+  totalPage,
 }) => {
   const [layoutProduct, setLayOutProduct] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
@@ -107,7 +110,9 @@ const ViewProduct = ({
         </div>
       </div>
       <div>
-        {layoutProduct ? (
+        {loading ? (
+          <Spinner animation="border" className="d-flex m-auto " />
+        ) : layoutProduct ? (
           <ProductViewRow
             dataViewLike={dataViewLike}
             setDataApiLike={setDataApiLike}
@@ -125,6 +130,7 @@ const ViewProduct = ({
           setQueryFilter={setQueryFilter}
           setDataFilterWatch={setDataFilterWatch}
           dataFilterWatch={dataFilterWatch}
+          totalPage={totalPage}
         />
         {/* <SliderProduct /> */}
       </div>

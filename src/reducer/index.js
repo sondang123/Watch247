@@ -6,6 +6,7 @@ import CartReducer from "./Cart";
 import BuyReducer from "./ProductsSold";
 import CollectionReducer from "./Collection";
 import MyFavouriteReducer from "./myFavourite";
+import MessageReducer from "./Message";
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   getdataBuy: BuyReducer,
   getdataCollection: CollectionReducer,
   getdataMyFavourite: MyFavouriteReducer,
+  getdataMessage: MessageReducer,
 });
 
 export default rootReducer;

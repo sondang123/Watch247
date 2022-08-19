@@ -1,0 +1,59 @@
+.listuser-chat-container {
+  background-color: #ffff;
+  height: 100%;
+  .header-list-user {
+    padding: 15px 0;
+    border-bottom: 1px solid #ececec;
+    input {
+      padding: 10px;
+      margin: 0 auto;
+      display: block;
+
+      border: 1px solid #cccccc;
+      border-radius: 100px;
+    }
+  }
+  .list-content-chat {
+    height: 60vh;
+    @media screen and(max-width: 768px) {
+      border-bottom: 1px solid #ececec;
+      height: auto;
+    }
+    overflow-y: auto;
+    .item-content-chat {
+      padding: 15px 0;
+      border-bottom: 1px solid #ececec;
+      @media screen and(max-width: 768px) {
+        border-bottom: unset;
+      }
+      &:hover {
+        cursor: pointer;
+        background: #b59d9d60;
+      }
+      .user-avatar {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        margin: 0 10px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .name-user {
+        h2 {
+          font-weight: 500;
+          font-size: 1.8rem;
+          line-height: 140%;
+          /* or 25px */
+
+          /* Text/Title */
+
+          color: var(--color-text-title);
+        }
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ const ViewProduct = ({
   dataViewLike,
   setDataApiLike,
   loading,
+  totalPage,
 }) => {
   const [layoutProduct, setLayOutProduct] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
@@ -124,6 +125,7 @@ const ViewProduct = ({
           setQueryFilter={setQueryFilter}
           setDataViewWatch={setDataViewWatch}
           dataViewWatch={dataViewWatch}
+          totalPage={totalPage}
         />
         {/* <SliderProduct /> */}
       </div>
